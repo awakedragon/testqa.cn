@@ -1,7 +1,7 @@
 testdoc
 =======
 
-1. 测试问答社区【面试问答、Selenium、自动化、qtp、性能、api、安全】
+1. 测试问答社区【面试问答、Selenium、自动化、qtp、性能、api、安全、python】
 1. 测试技术专栏 
 1. 在线工具[http mock、api test、chrome plug]
 1. 测试职位发布 
