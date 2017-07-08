@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="row">
+        <div class="col-xs-12 col-md-9 main">
+            <p class="main-title">
+                还没有找到组织？赶紧加入吧！
+                <a href="/write" class="btn btn-primary">立即加入 </a>
+            </p>
+        <div class="main__board">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-tabs-zen mb10">
+                <li class="active"><a href="/blogs">推荐的</a></li>
+                <li><a href="/blogs/newest">全部的</a></li>
+                <li><a href="/blogs/hottest">热门的</a></li>
+            </ul>
+
+                    <!-- Tab panes -->
+            <div class="stream-list blog-stream">
+                <div class="marketing">
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/free.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>小组名称</h4>
+                  <p class="desc">小组描述内容，100字以内</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/2.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/free.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>小组名称</h4>
+                  <p class="desc">小组描述内容，100字以内</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/2.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                  <div class="gsitem">
+                  <img class="img-circle" src="/static/images/3.jpg" alt="Generic placeholder image" width="80" height="80">
+                  <h4>selenium小组</h4>
+                  <p class="desc">专业讨论有关selenium的各种疑难杂症</p>
+                  </div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <div class="text-center">
+                <ul class="pagination"><li class="active"><a href="javascript:void(0);">1</a></li><li><a href="/blogs/recommendable?page=2">2</a></li><li><a href="/blogs/recommendable?page=3">3</a></li><li><a href="/blogs/recommendable?page=4">4</a></li><li><a href="/blogs/recommendable?page=5">5</a></li><li class="disabled"><span>…</span></li><li class="next"><a rel="next" href="/blogs/recommendable?page=2">下一页</a></li></ul>
+            </div>
+                </div><!-- /.main__board -->
+            </div><!-- /.main -->
+
+            <div class="col-xs-12 col-md-3 mt30 side">
+                 {% include "aside.html" %}
+
+                 <div class="widget-box">
+                    <h2 class="h4 widget-box__title">热门作者</h2>
+                    <ul class="list-unstyled list-unstyled">
+                                                <li class="widget-user media">
+                            <a class="pull-left" href="/blog/trigkit4">
+                                <img class="media-object avatar-40" src="http://sfault-avatar.b0.upaiyun.com/550/538/550538601-54b5303a2d493_big64">
+                            </a>
+                            <div class="media-object">
+                                <strong><a href="/blog/trigkit4">trigkit4</a></strong>
+                                <p class="text-muted">最近获得 41 推荐</p>
+                            </div>
+                        </li>
+                                                <li class="widget-user media">
+                            <a class="pull-left" href="/blog/OneAPM_Official">
+                                <img class="media-object avatar-40" src="http://sfault-avatar.b0.upaiyun.com/285/617/2856174340-55947353d817b_big64">
+                            </a>
+                            <div class="media-object">
+                                <strong><a href="/blog/OneAPM_Official">OneAPM蓝海讯通</a></strong>
+                                <p class="text-muted">最近获得 34 推荐</p>
+                            </div>
+                        </li>
+                                                <li class="widget-user media">
+                            <a class="pull-left" href="/blog/mono">
+                                <img class="media-object avatar-40" src="http://sfault-avatar.b0.upaiyun.com/168/080/1680805437-5559a6298c189_big64">
+                            </a>
+                            <div class="media-object">
+                                <strong><a href="/blog/mono">MonoLog</a></strong>
+                                <p class="text-muted">最近获得 20 推荐</p>
+                            </div>
+                        </li>
+                                                <li class="widget-user media">
+                            <a class="pull-left" href="/blog/dwqs">
+                                <img class="media-object avatar-40" src="http://sfault-avatar.b0.upaiyun.com/123/634/1236348520-5577e83608a48_big64">
+                            </a>
+                            <div class="media-object">
+                                <strong><a href="/blog/dwqs">不写代码的码农</a></strong>
+                                <p class="text-muted">最近获得 20 推荐</p>
+                            </div>
+                        </li>
+                                                <li class="widget-user media">
+                            <a class="pull-left" href="/blog/xirong">
+                                <img class="media-object avatar-40" src="http://sfault-avatar.b0.upaiyun.com/283/521/2835217249-5541e0a9df3db_big64">
+                            </a>
+                            <div class="media-object">
+                                <strong><a href="/blog/xirong">xirong</a></strong>
+                                <p class="text-muted">最近获得 19 推荐</p>
+                            </div>
+                        </li>
+                                            </ul>
+                </div>
+                                                <div class="widget-box">
+                    <h2 class="h4 widget-box__title">热门标签</h2>
+                    <ul class="taglist--block">
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/javascript/blogs" data-id="1040000000089436" class="tag" data-original-title="javascript">javascript</a>
+                            <span class="text-muted">× 1273</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/php/blogs" data-id="1040000000089387" class="tag" data-original-title="php">php</a>
+                            <span class="text-muted">× 584</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/python/blogs" data-id="1040000000089534" class="tag" data-original-title="python">python</a>
+                            <span class="text-muted">× 555</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/java/blogs" data-id="1040000000089449" class="tag" data-original-title="java">java</a>
+                            <span class="text-muted">× 478</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/ios/blogs" data-id="1040000000089442" class="tag" data-original-title="ios">ios</a>
+                            <span class="text-muted">× 399</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/node.js/blogs" data-id="1040000000089918" class="tag" data-original-title="node.js">node.js</a>
+                            <span class="text-muted">× 356</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/android/blogs" data-id="1040000000089658" class="tag" data-original-title="android">android</a>
+                            <span class="text-muted">× 308</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/swift/blogs" data-id="1040000000531223" class="tag" data-original-title="swift">swift</a>
+                            <span class="text-muted">× 130</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/docker/blogs" data-id="1040000000366352" class="tag" data-original-title="docker">docker</a>
+                            <span class="text-muted">× 126</span>
+                        </li>
+                                                <li class="mb10 tagPopup">
+                            <a href="/t/kubernetes/blogs" data-id="1040000002620943" class="tag" data-original-title="kubernetes">kubernetes</a>
+                            <span class="text-muted">× 12</span>
+                        </li>
+                                            </ul>
+                </div>
+                            </div><!-- /.layout-sidebar -->
+        </div>
+
+{% endblock %}

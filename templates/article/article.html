@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="wrap">
+    <div class="post-topheader custom-gemini">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li><a href="/blogs">文章</a></li>
+                        <li><a href="/blog/gemini">Gemini @ SegmentFault</a></li>
+                        <li class="active">文章详情</li>
+                    </ol>
+                    <h1 class="h3 title" id="articleTitle" data-id="1190000002957338"><a href="/a/1190000002957338"> #土豆记事#教你开发Android App之 —— Hello Android</a></h1>
+                    <div class="author" data-username="Gemini" data-userslug="gemini" data-useravatar="http://sfault-avatar.b0.upaiyun.com/203/657/2036570075-54b109ea92a7a_huge128">
+                        <a href="/u/gemini" class="mr5"><img class="avatar-24 mr10" src="http://sfault-avatar.b0.upaiyun.com/203/657/2036570075-54b109ea92a7a_huge128" alt="Gemini"><strong>Gemini</strong></a> <strong class="text-black mr10">2.2k</strong>
+                        45 分钟前 发布
+                                                                    </div>
+                </div>
+                <div class="col-md-3">
+                    <ul class="widget-action--ver list-unstyled">
+                        <li>
+                                                                                            <button type="button" class="btn btn-success btn-sm" data-id="1190000002957338" id="sideLike">推荐</button>
+                                                                                        <strong id="sideLiked">0</strong> 推荐
+                        </li>
+                        <li>
+                                                                                            <button type="button" id="sideBookmark" class="btn btn-default btn-sm" data-id="1190000002957338" data-type="article">收藏</button>
+                                                                                        <strong id="sideBookmarked">0</strong> 收藏，<strong class="no-stress">23</strong> 浏览
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- end .post-topheader -->
+
+    <div class="container mt30">
+        <div class="row">
+            <div class="col-xs-12 col-md-9 main">
+
+                                                <div class="article fmt">
+
+<p><a rel="nofollow" href="http://segmentfault.com/a/1190000002957332">上一篇文章</a>，我们讲了如何创建一个工程，以及Android工程的一些基本概念，把工程创建出来后，我们看下文件目录结构，一个简单的工程结构如下。</p>
+
+<p><img src="/static/upload/22.png" alt="clipboard.png" style="cursor: pointer;"><br>
+其实这个目录结构初次看还是挺让人心慌慌的。<br><code>Android</code>现在引入了一个构建系统叫做<a rel="nofollow" href="https://gradle.org/" target="_blank">Gradle</a>，你可以理解为一个C/C++里面的<code>Makefile</code> 或者是node里面的<code>gulp</code>。</p>
+
+<p><code>Android Studio</code>里面是分模块进行开发的，一个<code>app</code>可以只有一个模块，也可以有多个模块组成（比如一些自己开发的库）。如果我们的应用足够简单的话，那么就只有一个模块，<code>Android Studio</code>默认创建的模块就叫<code>app</code>，可以看见，文件夹旁边还有个小手机的标志，代表这是一个<code>Android Application</code>模块，而不是一个<code>Android Library</code>或者是其他模块。</p>
+
+<p>看看我们的代码应该放哪，我们把注意力集中在这个文件夹<br><img src="/static/upload/22.png" alt="clipboard.png" style="cursor: pointer;"></p>
+
+<p><code>src</code>是<code>source</code>的意思，也就是源码所在的目录，我们主要就是在这个文件夹里写东西。</p>
+
+<h1 id="articleHeader0">Main在哪？</h1>
+
+<p>我们来看看，我们要的<code>Main</code>函数在哪里？<br>
+首先我们看<code>src/main</code>目录下的<code>AndroidManifest.xml</code>文件。</p>
+
+<p><img src="/static/upload/22.png" alt="clipboard.png" style="cursor: pointer;"></p>
+
+<p><code>AndroidManifest</code> 是描述App的一个最最重要的文件，一些内容的定义，主题的设置都在这里，如果熟悉<code>node</code>的朋友肯定知道<code>package.json</code>，一样一样的。</p>
+
+<p>我们看到下图，在AndroidManifest中，出现的<code>MAIN</code>和<code>LAUNCHER</code>字眼，<code>Activity</code>有了他们两个的描述，它就成了你点击app的icon启动的第一个<code>Activity</code>。<br><img src="/static/upload/22.png" alt="clipboard.png" style="cursor: pointer;"></p>
+
+<p>在<code>src/main/java</code>文件夹中，找到<code>MainActivity</code>，打开，看见其中有一个<code>onCreate</code>的函数</p>
+
+<p><img src="/static/upload/22.png" alt="clipboard.png" style="cursor: pointer;"><br>
+顾名思义，这个函数是在这个<code>Activity</code>创建的时候调用的，它首先调用了下父类的onCreate方法（不可省略），然后调用了<code>setContentView</code>方法，这个方法是告诉Android系统：我用哪个布局文件去渲染这个<code>Activity</code>，好了，到这里一个入口的<code>Activity</code>就创建好了。</p>
+
+<p>注：在<code>Android</code>系统中，<code>Activity</code>类的对象不是用来给开发者直接去<code>new</code>的，它的生命周期<strong>由系统直接管控</strong>因为我们不参与控制<code>Activity</code>的生命周期，因此它在什么时候回调什么函数变得异常重要。学习编程最好的去处就是官方文档，如果想更加深入了解Android Activity生命周期的童鞋，我这里推荐看下官方对它的描述 传送门：<a rel="nofollow" href="http://developer.android.com/training/basics/activity-lifecycle/index.html" target="_blank">http://developer.android.com/training/basics/activity-lifecycle/index....</a></p>
+
+<h1 id="articleHeader1">界面如何自定义？</h1>
+
+<p>接下来说说<code>Android</code>中的布局系统，众所周知，<code>Android</code>一开始的设计就是为了相对布局而生的。它提供了许多强大的布局特性，我们先学习下<code>Android</code>中最常见的两种布局：</p>
+
+<blockquote>
+  <ol>
+<li>线性布局（LinearLayout）</li>
+  <li>相对布局（RelativeLayout）</li>
+  </ol>
+</blockquote>
+
+<p>线性布局就是子控件按顺序依次排列，线性布局可以设置方向，从上到下（vertical）或者从左到右（horizontal）。<br>
+相对布局就更自由了，如果你增加一个子控件，不设置任何属性，则子空间的位置在容器的左上角(0,0)处。如果想改变位置，可以通过在容器中的位置（比如左上，右上，左下，右下，中间，左对齐垂直居中，右对齐垂直居中等等），或者和兄弟结点的对齐方式来决定控件的位置。</p>
+
+<p>布局相关的参考可以看这个链接：<a rel="nofollow" href="http://developer.android.com/training/basics/firstapp/building-ui.html" target="_blank">http://developer.android.com/training/basics/firstapp/building-ui.html</a></p>
+
+<h1 id="articleHeader2">如何和控件交互</h1>
+
+<p>在<code>Activity</code>中，和<code>xml</code>相关的绑定在<code>setContentView</code>这步就算完成了。<code>Activity</code>在这之后会回调一个叫<code>onContentChanged</code>方法，在这个方法中，你可以使用类似如下代码：</p>
+
+<pre class="hljs nginx"><span class="widget-clipboard"></span><code><span class="hljs-title">TextView</span> textView = findViewById(R.id.textview);
+</code></pre>
+
+<p>来获得对指定控件的引用，其中<code>R.id.textview</code>是你在<code>xml</code>中指定的<code>android:id</code>，通常情况下，在一个<code>xml</code>文件中，同样的<code>id</code>只允许出现一次。<br>
+获取到对控件的引用，我们就能调用一些控件里的方法获取我们要的内容，或者设置我们要的内容，比如我这里引用了一个<code>TextView</code>，则可以如下：</p>
+
+<pre class="hljs"><span class="widget-clipboard" style="display: none;"></span><code>textView.getText()
+</code></pre>
+
+<p>获取到<code>textView</code>里面的内容。</p>
+
+<p>以上就是最基础的<code>UI</code>部分的入门讲解。接下去，我们可以看看要写的App的整个结构。</p>
+
+<blockquote>
+  <p>本文提到的项目源码地址：<a rel="nofollow" href="https://github.com/geminiwen/tudounotepad" target="_blank">https://github.com/geminiwen/tudounotepad</a><br>
+  欢迎留言<a rel="nofollow" href="https://github.com/geminiwen" target="_blank">Github</a>或者<a rel="nofollow" href="http://weibo.com/coffeesherk/home?wvr=5" target="_blank">@geminiwen</a></p>
+</blockquote>
+
+                </div>
+
+                <div class="clearfix">
+
+                    <ul class="taglist--inline pull-left">
+                                                <li class="tagPopup"><a class="tag" href="/t/android/blogs" data-toggle="popover" data-img="http://sfault-avatar.b0.upaiyun.com/752/833/752833330-1040000000089658_huge100" data-placement="top" data-original-title="android" data-id="1040000000089658">android</a></li>
+                                            </ul>
+
+                </div>
+                <div class="clearfix mt10">
+                    <ul class="article-operation list-inline pull-left">
+                        <li><a href="/a/1190000002957338" class="text-muted">链接</a></li>
+                                                                                                <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle text-muted" data-toggle="dropdown">更多<b class="caret"></b></a>
+                            <ul class="dropdown-menu dropdown-menu-left">
+                                <li><a href="#911" data-toggle="modal" data-target="#911" data-type="article" data-id="1190000002957338" data-typetext="文章">举报</a></li>
+                                                                                                                                                                                                        </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-center mt10">
+
+                    <button type="button" id="mainLike" data-id="1190000002957338" class="btn btn-success btn-lg mr10">
+                        0 推荐
+                    </button>
+
+                                    <button type="button" id="mainBookmark" data-type="article" data-id="1190000002957338" class="btn btn-default btn-lg ">
+                        收藏
+                    </button>
+                                </div>
+
+
+                                <div class="recommend-post pt30 mt40 mb30 border-top">
+                    <h4 class="mt0">你可能感兴趣的文章</h4>
+                    <ul class="widget-links list-unstyled">
+                                                <li class="widget-links__item">
+                            <a href="/a/1190000000411089" title="Android++：为Android App开发而生的Visual Studio的原生扩展">Android++：为Android App开发而生的Visual Studio的原生扩展</a>
+                            <small class="text-muted">
+                                831 浏览
+                            </small>
+                        </li>
+                                                <li class="widget-links__item">
+                            <a href="/a/1190000002572025" title="Android 之System　Permission">Android 之System　Permission</a>
+                            <small class="text-muted">
+                                244 浏览
+                            </small>
+                        </li>
+                                                <li class="widget-links__item">
+                            <a href="/a/1190000002718529" title="SegmentFault for Android.">SegmentFault for Android.</a>
+                            <small class="text-muted">
+                                981 浏览
+                            </small>
+                        </li>
+                                            </ul>
+                </div>
+                                <!-- <ul class="list-unstyled text-muted mt30">
+                                        <li>上一篇：<a href="/a/1190000002957332">#土豆记事#教你开发Android App之 —— 认识Android开发工具</a></li>
+                                                            <li class="mt5">下一篇：<a href="/a/1190000002957415">#土豆记事#教你开发Android App之 —— 真的开始写App了</a></li>
+                                    </ul> -->
+
+                <h2 class="h4 post-comment-title">讨论区</h2>
+                <div class="widget-comments" id="comment-1190000002957338" data-id="1190000002957338">
+                        <div class="widget-comments__form row">
+                                    <div class="col-md-12">
+                    请先 <a class="commentLogin" href="javascript:void(0);">登录</a> 后评论
+                </div>
+
+    </div><!-- /.widget-comments__form -->
+    </div><!-- /.widget-comments -->
+
+
+
+                                    <div class="widget-welcome-question mt20 mb20 hidden-xs widget-welcome">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="title h4">不要错过 TA 的任何更新</h2>
+            <p>如果这篇文章对你有帮助，记得点赞收藏哦，你的支持是我们的动力 ^___^</p>
+        </div>
+        <form id="user">
+            <div class="col-sm-10">
+                <div class="row">
+                    <div class="col-sm-4 pr0">
+                        <input type="text" class="form-control" placeholder="用户名" name="name" required="">
+                    </div>
+                    <div class="col-sm-4 pr0">
+                        <input type="text" class="form-control" placeholder="Email" name="mail" required="">
+                    </div>
+                    <div class="col-sm-4 pr0">
+                        <input type="password" class="form-control" placeholder="密码" name="password" required="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary btn-block">注册</button>
+            </div>
+            <div class="col-sm-10 mt10 captcha-part" style="display:none;">
+                <div class="row">
+                    <div class="col-sm-4 pr0">
+                        <input type="text" class="form-control" id="captcha" name="captcha" placeholder="请输入验证码" disabled="" required="">
+                    </div>
+                    <div class="col-sm-4 pr0">
+                        <a id="reloadCaptcha" href="javascript:void(0)"><img src="" height="35"></a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+            </div><!-- /.main -->
+
+
+            <div class="col-xs-12 col-md-3 side">
+                <div class="sfad-sidebar">
+            </div>
+
+                <div class="mb30 pb20 border-bottom">
+                    <p class="text-muted">本文隶属于专栏</p>
+                    <h4 class="fz16"><a href="/blog/gemini">Gemini @ SegmentFault</a></h4>
+                    <p>Gemini's Blog</p>
+                                                        <button type="button" class="btn btn-default follow-article mb10" data-do="follow" data-type="blog" data-id="1200000000366002">关注专栏</button>
+                                                    </div>
+
+
+                                                <div class="widget-box no-border">
+                    <h2 class="h4 widget-box__title">系列文章</h2>
+                    <ul class="widget-links list-unstyled">
+                                                    <li class="widget-links__item"><a title="#土豆记事#教你开发Android App之 —— 真的开始写App了" href="/a/1190000002957415">#土豆记事#教你开发Android App之 —— 真的开始写App了</a>
+                                    <small class="text-muted">
+                                                                                7 浏览
+                                    </small>
+                            </li>
+                                                    <li class="widget-links__item"><a title="#土豆记事#教你开发Android App之 —— 认识Android开发工具" href="/a/1190000002957332">#土豆记事#教你开发Android App之 —— 认识Android开发工具</a>
+                                    <small class="text-muted">
+                                                                                19 浏览
+                                    </small>
+                            </li>
+                                            </ul>
+                </div>
+
+                <div class="post-nav hidden-xs side-outline hidden-sm" style="display: block; width: 100%; top: 0px;">
+                    <div class="panel panel-default widget-outline">
+                        <div class="panel-heading">文章目录</div>
+                        <div class="panel-body">
+                            <div class="nav-body" style="top: 0px;">
+                                <div class="highlight-title" style="display: none; top: 0px; height: 27px;"></div>
+                                <ul class="articleIndex"><li class=""><a href="#articleHeader0">Main在哪？</a></li><li class=""><a href="#articleHeader1">界面如何自定义？</a></li><li class=""><a href="#articleHeader2">如何和控件交互</a></li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.side -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
