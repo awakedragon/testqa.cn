@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="row">
+    <div class="col-xs-12 col-md-9 main">
+        <p class="main-title">
+            还没有找到组织？赶紧搜索下吧！
+            <input id="search_group" type="text" style="width:150px; display: inline-block;" class="form-control" placeholder="请输入小组名">
+            <a id="go_search" href="/group/search" class="btn btn-primary">搜索</a>
+        </p>
+
+        <div class="main__board">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-tabs-zen mb10">
+                <li class="{{recomment}}"><a href="/group">推荐的</a></li>
+                <li class="{{hotest_active}}"><a href="/group/hotest">热门的</a></li>
+                <li class="{{all_active}}"><a href="/group/all">全部的</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="stream-list blog-stream">
+                <div class="marketing">
+                {% for group in groups %}
+                    <a href="{{ url_for('group.detail') }}?id={{ group.id }}" target="_blank">
+                    <div class="gsitem" tid="{{ group.id }}">
+                      <img class="img-circle" src="{{ group.icon }}" alt="Generic placeholder image" width="80" height="80">
+                      <h4>{{ group.name }}</h4>
+                      <p class="desc">{{ group.description }}</p>
+                    </div>
+                    </a>
+                {% endfor %}
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+
+            <div class="text-center">
+                <ul class="pagination"></ul>
+            </div>
+        </div><!-- /.main__board -->
+    </div><!-- /.main -->
+
+    <div class="col-xs-12 col-md-3 mt30 side">
+         {% include "aside.html" %}
+
+         <div class="widget-box">
+            <h2 class="h4 widget-box__title">活跃成员</h2>
+            <ul class="list-unstyled list-unstyled">
+                <li class="widget-user media">
+                    <a class="pull-left" href="/blog/xirong">
+                        <img class="media-object avatar-40" src="http://sfault-avatar.b0.upaiyun.com/283/521/2835217249-5541e0a9df3db_big64">
+                    </a>
+                    <div class="media-object">
+                        <strong><a href="/blog/xirong">xirong</a></strong>
+                        <p class="text-muted">最近获得 19 推荐</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="widget-box">
+            <h2 class="h4 widget-box__title">热门标签</h2>
+            <ul class="taglist--block">
+                <li class="mb10 tagPopup">
+                    <a href="/t/javascript/blogs" data-id="1040000000089436" class="tag" data-original-title="javascript">javascript</a>
+                    <span class="text-muted">× 1273</span>
+                </li>
+                <li class="mb10 tagPopup">
+                    <a href="/t/php/blogs" data-id="1040000000089387" class="tag" data-original-title="php">php</a>
+                    <span class="text-muted">× 584</span>
+                </li>
+                <li class="mb10 tagPopup">
+                    <a href="/t/python/blogs" data-id="1040000000089534" class="tag" data-original-title="python">python</a>
+                    <span class="text-muted">× 555</span>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.layout-sidebar -->
+</div>
+
+{% endblock %}
+
+{% block bottom_ext %}
+<script>
+    $(function(){
+        $('.gsitem').hover(function(){
+            $(this).find('.desc').css('display', 'block');
+            <!--$(this).css('border', '1px solid black');-->
+        }, function(){
+            $(this).find('.desc').css('display', 'none');
+            <!--$(this).css('border', '0px solid black');-->
+        });
+
+        $('.gsitem').click(function(){
+            var tid = $(this).attr('tid');
+        });
+    });
+</script>
+{% endblock %}
